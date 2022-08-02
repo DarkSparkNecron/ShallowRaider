@@ -1,5 +1,5 @@
 #icon "256x64.tga"
-icon "WateryMod/WateryMod.tga"
+icon "WateryMod/MenuBanner_Dev.tga" #MenuBanner.tga for release version
 description "This mod adds a Shallow Raider class into your service. A class based around ictyids and water magic (as cloud lord is based around air and agartha - earth). It was nearly ported from Coe4 and still need to be developed. ^^ Mod by Dark_Spark.   v.1"
 
 #================================================================================
