@@ -1,0 +1,269 @@
+#icon "256x64.tga"
+icon "WateryMod/WateryMod.tga"
+description "This mod adds a Shallow Raider class into your service. A class based around ictyids and water magic (as cloud lord is based around air and agartha - earth). It was nearly ported from Coe4 and still need to be developed. ^^ Mod by Dark_Spark.   v.1"
+
+#================================================================================
+#uw summoning magic: summon animals (Lobster, Sea Dog, Sea Stag). Release the kraken (Kraken) - more expensive
+
+newritpow "Aquaic Conjuration" #number of pow is 0. to monster upplies last ritpow before him!
+#nomonworldreq + addstring (-)<monstername>+ ... + free(?) : means that this monster should not be in the world to cast spell
+#free означает, что ритуал известен всем от мала до велика с самого начала. Начинаем думать как реализовать изучение новых ритуалов и прочего уровня 0
+
+#well well well. try lvl0 for rituals of upgrade or gems transfer
+
+newritual "Ways of Lesser Waters" #ritual for learnin new ones of apprentice level
+descr "Gives knowledge of a new spell in Aquatic Conjuration of apprentice level"
+level 0
+start
+newrit 1
+cost 8 15
+#gainrit 1 #not work
+#spell works, school 0 is exist, but wheres my other spells?
+#its overwrites a single ritual that was before, so free is overwriting. ok its not, just neede to create a new game. but still no distill gems
+
+newritual "Ways of Greater Waters"
+descr "Gives knowledge of a new spell in Aquatic Conjuration of average level"
+level 0
+cost 8 30
+levelup 2
+start
+newrit 2
+
+#distilling spells are incorrect or for school 0 only newrits are allowed. so lets make them free lvl1 spells, as free forked properly
+newritual "Distill Gems"
+level 1
+free
+descr "Transforms Fire Gems into Water gems for our rituals"
+cost 8 -1 #gives 1 water stone
+cost 7 2
+#nexttoo
+
+newritual "Condensate Gems"
+descr "Transforms Air Gems into Water gems for our rituals"
+level 1
+free
+cost 8 -1 #gives 1 water stone
+cost 9 2
+
+
+
+newritual "Vaporise Gems"
+descr "Transforms Earth Gems into Water gems for our rituals"
+level 1
+free
+cost 8 -1 #gives 1 water stone
+cost 10 2
+#newrit 1 #so actually it makes learned all the spells of 0 path in line and a random apprentice ritual.
+#gainrit -1
+#gainrit -2
+
+
+newritual "Call Sea Dogs" #apprentice ritual for summoning 1-2 dogs in exchange of water gems
+level 1
+descr "Caster uses the power of a water gems to connect himself with a sea and call for a couple of Sea Dogs. Seadogs are ampfibious creatures that resembles a dog with a blue fur, however, usually they are extremely hungry and comes to the shores to find food in unfortified cities"
+terr -43 #uw only, see tablet 15a,b for some useful info
+cost 8 3 #resource types in table 14. 3 water stones
+summoning
+addstring "1d3*Sea Dog" #0 can be rolled lol or its just dont work. ok its not working. без пробелов между д6 и названием нужно *. c*=командир. & = и в плане юниты в одной пачке призваны. И вот оно уже заработало как только * появились. Кстати, там дайс открытый похоже. тк 4 собаки призвало
+
+newritual "Release the Kraken!"
+level 1
+descr "Releases an ultimate beast into your service"
+terr -43
+cost 8 10
+summoning
+addstring "Kraken"
+
+newritual "Crabrawe"
+level 1
+descr "summons lobsters"
+terr -43
+cost 8 5
+summoning
+addstring "1d6*Lobster"
+
+newritual "Call Sea Stag"
+level 1
+descr "Calls for a Sea Stag, a stag from the seas."
+terr -43
+cost 8 3
+summoning
+addstring "Sea Stag"
+
+#also you know, theres Hippocampus the sea unicorn exists. oh c'mon Leocampus
+
+newritual "Summon Crab Beast"
+level 1
+descr "Summons a giant crab from the deeps"
+terr -43
+cost 8 10
+summoning
+addstring "Giant Crab"
+
+#Monster Fish. It exists somehow. Asp Turtle as well, i mean Sea Dragon. Lake Troll
+
+#easter egg for the debuging of ichtyids
+newritual "Army of Uogg"
+level 2
+descr "Unleashes into the world a mighty Uogg and his legion of shore raiders to wreak havoc once more. Uogg will appear with his court and will be under your wisdomous command. ^ Made as easter egg to early development stage"
+terr -17 #near water
+cost 8 50
+summoning
+addstring "c*Ichtyid Captain & 6*Ichtyid Raider & 6*Ichtyid Warrior & c*Ichtyid Shaman & c*Bishop Fish"
+#10 raiders and 5 warriors
+
+#Great Shark, Triton, Trito Trooper.
+#Minotaur Brigand exists
+
+newritual "Summon Sea Spirits" #undines as units & commander
+level 2
+descr "Through the complex rituals a mage is able to summon a couple of Water Spirits - a beings made of water essense and power themselves. Its rare occasion to see some of them in the deep seas and mostly all reports about contacts came from sailors and fishermens."
+terr -43
+cost 8 30
+summoning
+addstring "c*Undine"
+addstring "1d3*Undine"
+sum0chance 10
+
+
+newritual "Call Beasts" #like great shark, asp turtle, sea dragon and php jellyfish
+level 2
+descr "Caster gives a call for an underwater creature of great might. Usually they are unable to leave the sea"
+terr -43
+cost 8 30
+summoning
+addstring "Great Shark | Asp Turtle | Sea Dragon | Monster Fish"
+
+newritual "Create Vortex" #makes a vortex in deep sea into elemental plane
+level 2
+descr "Using a hell lot of water gems water mage creates a vortex in the deep sea. This vortex leads down to the ocean floor, hovewer, the fact is that if passing down througth it traveller will reach The Water Real instead"
+terr 68 #deep sea
+cost 8 100
+apcost 6 #move 6 points
+alterloc 228 #maelstrom
+closewin
+
+newritual "Aquatic Paths"
+level 2
+descr "Caster with his entire army dissappears in depths just to materialise in any other deep enough location. Ichtyid mages that achieved such mastery is having a lot of rescpect due to their new ability to lead parties to raids of any coast in the world unseen"
+terr -43 #from any sea or lake
+cost 8 50
+apcost 3 
+chooseterrloc -43 #to any sea or lake
+teleportloc 2
+scryloc 20
+#=======================================================================
+
+newmonster "Ichtyid Shaman"
+descr "A fishman that somehow managed to learn the way of waters.^they are able to summon warious animals from the seas"
+copystats "Ichtyid Captain" #sprites included in copystats
+spr1 "WateryMod/IchtShamanNotKing1.tga"
+spr2 "WateryMod/IchtShamanNotKing2.tga"
+#copystats "Ichtyid Captain"
+clearweapons
+meleeweapon 1 "Magic Rod"
+spellweapon 4 1 #apprentice hydromances
+power 0 1
+gathergems
+#(for power) "Aquatic Conjuration",level 1. ritpow 27 is swamp cleaners. ritpow 28 unexist. knows 1 ritual for some reason with no promotions. need to create new game each time
+#actually if i can only do ichtyids so here be ictyids class. to dominions ictyid lord = ictyid captain from coe. So name is Ichtyid Lord or Shallow Raider. and Lord will be as really buffed captain
+#also add abulity to conjuration to revert 3 other gems type into blue ones
+mastery 2
+
+
+newmonster "Ichtyid Lord"
+copystats "Ichtyid Captain"
+descr "A supreme superpowerfull ichtyid that leads an entire pack of fishman to the coasts for glory"
+clearweapons
+hp 14
+str 6
+mor 7
+armor 2
+frontpos #it will go to charge from its mid pos
+meleeweapon 1d3+3 "Trident"
+meleeweaponbonus 1d3 "Shortsword"
+spellweaponbonus 4 1 #apprentise hydromancy with no penalties in close combat
+#more1spells -1 это чтобы только 1 спелл вместо двух знал
+
+newmonster "Ichtyid Pearl Mage"
+descr "Its impossible for Ichtyid to obtain such power. Rumours says that triton lord Thaumas given some knowledge of tritonian pearl mages to chosen ictyids ages ago."
+copystats "Ichtyid Captain"
+spr1 "WateryMod/IchtShamanKing1.tga"
+spr2 "WateryMod/IchtShamanKing2.tga"
+clearweapons
+meleeweapon 1 "Magic Rod"
+spellweapon 4 2
+power 0 2
+gathergems
+
+
+
+
+
+
+
+#========================================
+
+newclass
+setclassname "Shallow Raider"
+classdescr "Ictyids is a race of bulky fismen that is dwelling coastlines abowe and below the sea. They're quite dumb and like shiny things, like gold or pearls. This, perhaps, is the main reason of numerous raids. Many coastal hamlets were ruined into ashes by the coatla raiders, shallow animals or deep cults. ^ The most skilled (in warcraft and magic) Ictyid of its local groups, if not dumb enough, could proclaim himself as a Lord. His infuence is wide in both shaman and captain ranks and by this his title of a Lord shall be whispered across the coasts. As this is a Shallow Raider, a fish, that managed to organise all other fish. ^^ If role of captains is clear the shamans, a misterious caste of Ictyids, is a fisman somehow managed to leard ways of waters. They spent most of thir time looking at shiny blue gems and talking with anderwater fauna. In the ages of war they summon as many beasts as they could to help their lord. ^ And the most rare individuals is a Perl Mages, which are able not only to contact animals, but use power of water itself, for example, to transport armies via underwater currents. ^^^ Features: ^ Command your army of expensive, but powerful fismen. ^ Summon hordes of animals ^ Use water magic to achieve stategical advantages ^ A mages are able to convert gems into blue gems with a 2:1 course"
+
+hometerr 219
+addstartterr 41
+
+addcomrec "Bishop Fish" 25 100 38 0
+templerec
+addcomrec "Ichtyid Captain" 50 75 15 0
+addcomrec "Ichtyid Shaman" 15 125 50 0
+
+addunitrec "Ichtyid Raider" 100 3 25 10 0 
+addunitrec "Ichtyid Warrior" 100 3 50 10 0
+
+setmaincom "Ichtyid Lord"
+addstartunits "Ichtyid Raider" 10
+addstartunits "Ichtyid Warrior" 5
+addstartcom "Ichtyid Shaman"
+
+#nostdtroops
+
+#triton class (underwater aqutic dude) ====================================
+#newclass
+#setclassname "Triton Noble"
+#classdescr "A triton noble is trying to conquer the seas in the name of the God of Fish."
+##have no magic ecscept prayering wia bishop fishs, will use tritons, php mermans and ictyids
+
+#hometerr 219 #218-220 are coral citadels. will ned to know what it is - place where we spawn
+#reqterr 68 #deep sea, 69 is shallow
+#addstartterr 41 #41 is blue gem deposit. 141 is deep sea analog
+
+#commanders for triton. <chance of appearing> <goldcost> <gold deviation> <iron>
+#addcomrec "Bishop Fish" 25 100 38 0
+#templerec
+#addcomrec "Ichtyid Captain" 50 75 15 0
+#addcomrec "Ichtyid Shaman" 15 125 50 0
+
+#units for triton
+#addunitrec "Ichtyid Raider" 100 3 25 10 0 #"name" <chance> <amount> <gold> <deviation> <iron>
+#addunitrec "Ichtyid Warrior" 100 3 50 10 0
+
+
+#Ichtyid Warrior\Captain - names of fishmans. also exist Ichtyid Raider with net and golojopa
+#also for cesor there exists Dust Walkers on gem deposits in the deserts
+
+#setmaincom "Ichtyid Lord"
+#addstartcom "Ictyid Captain"
+#addstartcom "Bishop Fish"
+#addstartunits "Ichtyid Raider" 10
+#addstartunits "Ichtyid Warrior" 5
+#addstartcom "Ichtyid Shaman"
+
+
+#spirit from the hades =======================================
+#newclass
+#setclassname "Spirit"
+#classdescr "spirit that was banished from the Underworld into Elysium and now he wants to get back occasionally taking over everything to challenge Lord of the Death himself"
+#mostly would play from the hades and summons or recruit from hadesian cities. Only have acces to hades
+#Wraith, Ghoul, Ghost Warrior
+
+
+#watch tower. Old Wizard (wizardy lvl3) + Spirit Ring + Ring of the Dead. Also two Guardians (watchers)
