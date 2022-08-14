@@ -197,19 +197,50 @@ power 0 2
 gathergems
 
 
+selectterr 525
+spr1 "WateryMod/CrystalLake.tga"
+name "Crystal lake"
+gems 16 #two sapphires
+water
+ownable
+#batmap
 
+selectterr 526
+spr1 "WateryMod/RaidedVillage.tga"
+name "Raided Settlement"
+gold 2
+sacr 1
+hands 1
+dead 10
+pop 3
+ownable
+batmap
+settlement 40
 
-
+selectterr 527
+spr1 "WateryMod/CoastalCitadel.tga"
+name "Coastal Citadel"
+citadel
+gold 3
+ownable
+batmap 9 #is it needed?
+walls
+barricade #woodengate
+farsight
+port
 
 
 #========================================
 
 newclass
 setclassname "Shallow Raider"
-classdescr "Ictyids is a race of bulky fismen that is dwelling coastlines abowe and below the sea. They're quite dumb and like shiny things, like gold or pearls. This, perhaps, is the main reason of numerous raids. Many coastal hamlets were ruined into ashes by the coatla raiders, shallow animals or deep cults. ^ The most skilled (in warcraft and magic) Ictyid of its local groups, if not dumb enough, could proclaim himself as a Lord. His infuence is wide in both shaman and captain ranks and by this his title of a Lord shall be whispered across the coasts. As this is a Shallow Raider, a fish, that managed to organise all other fish. ^^ If role of captains is clear the shamans, a misterious caste of Ictyids, is a fisman somehow managed to leard ways of waters. They spent most of thir time looking at shiny blue gems and talking with anderwater fauna. In the ages of war they summon as many beasts as they could to help their lord. ^ And the most rare individuals is a Perl Mages, which are able not only to contact animals, but use power of water itself, for example, to transport armies via underwater currents. ^^^ Features: ^ Command your army of expensive, but powerful fismen. ^ Summon hordes of animals ^ Use water magic to achieve stategical advantages ^ A mages are able to convert gems into blue gems with a 2:1 course"
+classdescr "Ictyids is a race of bulky fismen that is dwelling coastlines abowe and below the sea. They're quite dumb and like shiny things, like gold or pearls. This, perhaps, is the main reason of numerous raids. Many coastal hamlets were ruined into ashes by the coatla raiders, shallow animals or deep cults. ^ The most skilled (in warcraft and magic) Ictyid of its local groups, if not dumb enough, could proclaim himself as a Lord. His infuence is wide in both shaman and captain ranks and by this his title of a Lord shall be whispered across the coasts. As this is a Shallow Raider, a fish, that managed to organise all other fish. ^^ If role of captains is clear the shamans, a misterious caste of Ictyids, is a fisman somehow managed to leard ways of waters. They spent most of thir time looking at shiny blue gems and talking with anderwater fauna. In the ages of war they summon as many beasts as they could to help their lord. ^ And the most rare individuals is a Perl Mages, which are able not only to contact animals, but use power of water itself, for example, to transport armies via underwater currents."
+classabdescr "Command your army of expensive, but powerful fismen. ^ Summon hordes of animals ^ Use water magic to achieve stategical advantages ^ A mages are able to convert gems into blue gems with a 2:1 course"
 
-hometerr 219
-addstartterr 41
+hometerr 527 #219
+addstartterr 525 #41
+addstartterr 526
+likecoast 10
 
 addcomrec "Bishop Fish" 25 100 38 0
 templerec
@@ -226,6 +257,8 @@ addstartcom "Ichtyid Shaman"
 
 #nostdtroops
 
+#===================================================
+#=================================Cringe section
 #triton class (underwater aqutic dude) ====================================
 #newclass
 #setclassname "Triton Noble"
