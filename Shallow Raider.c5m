@@ -196,7 +196,24 @@ spellweapon 4 2
 power 0 2
 gathergems
 
+newmonter "Ichtyid Hunter"
+copystats "Ichtyid Raider"
+spr1 "WateryMod/IchtHuntermall.tga"
+spr2 "WateryMod/IchtHuntermall.tga"
+clearweapons
+rangedweapon 1 "Harpoon"
 
+newmonter "Coral Guard"
+copystats "Ichtyid Warrior"
+#spr1 "WateryMod/IchtShamanNotKing1.tga" #sprites included in copystats
+#spr2 "WateryMod/IchtShamanNotKing2.tga"
+poisonspikes 3 #AN strikeback damage
+armor 2
+mor 6
+hp 13
+meleeweaponbonus 0 "Dagger"
+
+#========================terrain
 selectterr 525
 spr1 "WateryMod/CrystalLake.tga"
 name "Crystal lake"
@@ -248,7 +265,10 @@ addcomrec "Ichtyid Captain" 50 75 15 0
 addcomrec "Ichtyid Shaman" 15 125 50 0
 
 addunitrec "Ichtyid Raider" 100 3 25 10 0 
-addunitrec "Ichtyid Warrior" 100 3 50 10 0
+addunitrec "Ichtyid Warrior" 100 3 50 10 5
+addunitrec "Ichtyid Hunter" 100 3 35 10 0 #php should 1
+addunitrec "Coral Guard" 100 3 50 10
+recxcost 10 5 #+5 emeralds
 
 setmaincom "Ichtyid Lord"
 addstartunits "Ichtyid Raider" 10
